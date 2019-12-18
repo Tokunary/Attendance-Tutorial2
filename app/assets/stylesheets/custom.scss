@@ -23,17 +23,24 @@ textarea {
   margin-bottom: 10px;
 }
 
+.jumbotron {
+  background-color: #fff;
+}
+
 /* タイポグラフィ */
 
 h1, h2, h3, h4, h5, h6 {
   line-height: 1;
 }
 
-h1 {
-  font-size: 3em;
+#top-main-title {
+  
+  font-size: 4em;
   letter-spacing: -2px;
   margin-bottom: 30px;
   text-align: center;
+  font-style: italic;
+  font-weight: bold;
 }
 
 h2 {
@@ -48,6 +55,7 @@ h2 {
 p {
   font-size: 1.1em;
   line-height: 1.7em;
+  text-align: center;
 }
 
 /* ヘッダー */
