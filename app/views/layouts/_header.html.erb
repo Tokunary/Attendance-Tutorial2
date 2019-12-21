@@ -5,7 +5,8 @@
       <%= link_to "Task App", root_path, id: "logo" %>
       <nav>
         <ul class="nav navbar-nav navbar-right">
-          <li><%= link_to "トップ", root_path %></li>
+          
+          <li><%= link_to "トップ", root_path, id: "header-list" %></li>
           <% if logged_in? %>
             <li><%= link_to "利用者一覧", '#' %></li>
             <li class="dropdown">
@@ -20,7 +21,7 @@
               </ul>
             </li>
           <% else %>
-            <li><%= link_to "ログイン", login_path %></li>
+            <li><%= link_to "ログイン", login_path, id: "header-list" %></li>
           <% end %>
         </ul>
       </nav>
