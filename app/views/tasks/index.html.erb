@@ -17,6 +17,16 @@
         </thead>
       </table>
       
+      <tbody>
+        <% @tasks.each do |task| %>
+          <tr>
+            <td>
+             <p><%=link_to task.title, task_path(task.id) %></p>
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+      
       
       </div>
     </div>
