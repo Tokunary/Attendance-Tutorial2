@@ -17,7 +17,9 @@ class TasksController < ApplicationController
   end
 
   def index
-    @tasks = Task.all    
+    @users = User.all
+    @tasks = Task.all
+    
   end
   
   def show
