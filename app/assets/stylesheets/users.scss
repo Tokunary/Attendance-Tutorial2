@@ -22,3 +22,19 @@
 .btn-user--edit {
   margin-top: 10px;
 }
+
+
+table {
+  border-collapse: collapse;
+}
+
+table th, table td{
+  border: solid 1px #ddd;
+  
+}
+
+table th {
+  position: relative;
+  text-align: left;
+  background-color: #f5f5f5;
+}
