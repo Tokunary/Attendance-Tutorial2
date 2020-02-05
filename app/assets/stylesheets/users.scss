@@ -23,17 +23,22 @@
   margin-top: 10px;
 }
 
+#table-users {
+  td {
+    vertical-align: middle;
+  }
+}
 
-table {
+#table-user {
   border-collapse: collapse;
 }
 
-table th, table td{
+#table-user th, #table-user td{
   border: solid 1px #ddd;
   
 }
 
-table th {
+#table-user th {
   position: relative;
   text-align: left;
   background-color: #f5f5f5;

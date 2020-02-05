@@ -2,7 +2,7 @@
   <%= render 'shared/error_messages', object: @user %>
 
   
-  <%=f.label :mame, class: "label-#{yield(:class_text)}" %>
+  <%=f.label :name, class: "label-#{yield(:class_text)}" %>
   <%=f.text_field :name, class: "form-control" %>
   
   
@@ -16,5 +16,5 @@
   <%=f.password_field :password_confirmation, class: "form-control" %>
   
   
-  <%=f.submit yield(:button_text), class: "btn btn-primary btn-black btn-#{yield(:class_text)}" %>
+  <%=f.submit yield(:button_text), class: "btn btn-primary btn-block btn-#{yield(:class_text)}" %>
 <% end %>
