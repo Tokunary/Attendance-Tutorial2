@@ -14,19 +14,19 @@
             <th>名称</th>
             <th>作成日</th>
           </tr>
-          <tr>
-            <td>インフル</td>
-            <td>2020/2/10</td>
-          </tr>
         </thead>
       </table>
       
       <tbody>
         <% @tasks.each do |task| %>
-          <tr>
-            <td><%= link_to task.name, task %></td>
-            <td><%= link_to task.Created date, task %></td>
-          </tr>
+          <div class="posts-index-item">
+            <tr>
+              <td><%= link_to task, task %></td>
+              <td></td>
+              <td><button type="button" class="btn btn-primary btn-sm">Small button</button></td>
+              </td>
+            </tr>
+          </div>
         <% end %>
       </tbody>
       

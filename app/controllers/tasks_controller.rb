@@ -7,9 +7,9 @@ class TasksController < ApplicationController
   
   def create
     @tasks = Task.new(task_params)
-    if @task.save
-      log_in @task
-      flash[:success] = '新規作成に成功しました。'
+    if @tasks.save
+        log_in @tasks
+        flash[:success] = '新規作成に成功しました。'
       redirect_to @tasks
     else
       render :new
@@ -17,15 +17,22 @@ class TasksController < ApplicationController
   end
 
   def index
-    @users = User.all
+    @users = User.find_by(params[:id])
     @tasks = Task.all
-    
-    
+    @tasks = [
+      "インフル",
+      "予防内服",
+      ]
   end
   
   def show
   end
   
+  def task_params
+    params.require(:task).permit(:task, :task_details).merge(user_id: current_user.id)
+  end
+
+
   private
 
   def logged_in_user
