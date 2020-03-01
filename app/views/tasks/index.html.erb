@@ -6,24 +6,27 @@
     <h1>管理者のタスク一覧</h1>
     <div class= "row">
       <div class= "col-md-10 col-md-offset-1">
-        <a class="btn btn-primary pull-right" href= "/tasks/new" >タスクの新規作成 </a>
+        <a class="btn btn-primary pull-right" href= "/users/:id/tasks/new" >タスクの新規作成 </a>
       
       <table class= "table table-hover" id="table-tasks">
         <thead>
           <tr>
-            <th>名称</th>
-            <th>作成日</th>
+            <th><%= Task.human_attribute_name :名称 %></th>
+            <th><%= Task.human_attribute_name :作成日 %></th>
           </tr>
         </thead>
       </table>
       
       <tbody>
         <% @tasks.each do |task| %>
-          <div class="posts-index-item">
+          <div class="tasks-index-item">
             <tr>
               <td><%= link_to task, task %></td>
               <td></td>
-              <td><button type="button" class="btn btn-primary btn-sm">Small button</button></td>
+              <td><button type="button" class="btn btn-success">編集</button></td>
+              <td><%= link_to "削除", task, method: :delete,
+                  data: { confirm: "「#{@tasks}」を削除します。よろしいですか？" },
+            class: "btn btn-danger" %>
               </td>
             </tr>
           </div>
