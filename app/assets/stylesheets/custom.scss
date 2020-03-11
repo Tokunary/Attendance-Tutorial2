@@ -31,6 +31,9 @@ textarea {
   float: right;
 }
 
+.navbar-nav > .dropdown.open > a.dropdown-toggle {
+  background-color: #008080;
+}
 
 
 /* タイポグラフィ */
@@ -95,6 +98,29 @@ p {
   color: #C0C0C0;
   text-decoration: none;
 }
+
+#dropdown-title {
+  color: #fff;
+  font-weight: bold;
+}
+
+#dropdown-title:hover {
+  color: #C0C0C0;
+  text-decoration: none;
+}
+
+
+li.dropdown_header {
+  background-color: rgba(200,200,200,0.5);
+  font-weight: bold;
+}
+.dropdown_header {
+  display: black;
+  padding: 3px 20px;
+  font-size: 12px;
+  color: #777;
+}
+
 
 /* デバッグウインドウ */
 
