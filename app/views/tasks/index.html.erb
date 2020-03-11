@@ -1,6 +1,6 @@
 <!--<h1>Task#index</h1>-->
 <!--<p>Find me in app/views/task/index.html.erb</p>-->
-
+<% provide(:title, @current_user.name) %>
 <div class= "tasks-index">
   <div class="container">
     <h1>管理者のタスク一覧</h1>
@@ -15,28 +15,27 @@
             <th><%= Task.human_attribute_name :作成日 %></th>
           </tr>
         </thead>
+
+          <% @tasks.each do |task| %>
+           
+              <tr>
+                <td><%= link_to task.name, task %></td>
+                <td>
+                  <% if current_user.admin? && !current_user?(user) %>
+                    <%= link_to "編集", edit_task_path(current_user),class: "btn btn-success" %>
+                    <%= link_to "削除", task, method: :delete,
+                    data: { confirm: "「#{@tasks}」を削除します。よろしいですか？" },
+                    class: "btn btn-danger" %>
+                    <% end %>
+                </td>
+              </tr>
+            </div>
+          <% end %>
+        
       </table>
-      
-      <tbody>
-        <% @tasks.each do |task| %>
-          <div class="tasks-index-item">
-            <tr>
-              <td><%= link_to task, task %></td>
-              <td></td>
-              <td><button type="button" class="btn btn-success">編集</button></td>
-              <td><%= link_to "削除", task, method: :delete,
-                  data: { confirm: "「#{@tasks}」を削除します。よろしいですか？" },
-            class: "btn btn-danger" %>
-              </td>
-            </tr>
-          </div>
-        <% end %>
-      </tbody>
-      
       
       </div>
     </div>
     
   </div>
-
 </div>

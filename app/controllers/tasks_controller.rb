@@ -1,5 +1,12 @@
 class TasksController < ApplicationController
   before_action :logged_in_user,only: [:index, :show]
+  
+  def index
+    @tasks = Task.paginate(page: params[:page], per_page: 20)
+  end
+  
+  def show
+  end
 
   def new
     @tasks = Task.new
@@ -10,30 +17,24 @@ class TasksController < ApplicationController
     if @tasks.save
         log_in @tasks
         flash[:success] = '新規作成に成功しました。'
-      redirect_to @tasks
+        redirect_to @tasks
     else
       render :new
     end
   end
 
-  def index
-    @users = User.find_by(params[:id])
-    @tasks = Task.all
-    @tasks = [
-      "インフル",
-      "予防内服",
-      ]
+  def edit
+    @user = User.find(params[:id])
   end
   
-  def show
-  end
+  private
   
   def task_params
     params.require(:task).permit(:task, :task_details).merge(user_id: current_user.id)
   end
 
 
-  private
+  
 
   def logged_in_user
     unless logged_in?
