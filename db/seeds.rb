@@ -19,7 +19,7 @@ end
 
 
 
-Task.create!( task_name: "t task1",
+Task.create!( task_name: "task1",
               task_description: "タスク作成")
 
               
