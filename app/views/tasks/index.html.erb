@@ -17,16 +17,18 @@
         </thead>
 
           <% @tasks.each do |task| %>
-           
+            <div class="container"> 
               <tr>
-                <td><%= link_to task.name,edit_task_path(task.id) %></td>
+                <td><%= link_to task.name,task_path(task.id) %></td>
                 <td><%= task.created_at.strftime('%Y/%m/%d %H:%M') %></td>
                 <td>
-                   <%= link_to "編集", task_path,  class: "btn btn-success" %>
+                  
+                   <%= link_to "編集", edit_task_path(current_user),  class: "btn btn-success" %>
                    <%= link_to "削除", task, method: :delete,
                        data: { confirm: "削除してよろしいですか？" }, class: "btn btn-danger" %>
                 </td>
               </tr>
+            </div>
           <% end %>
         
       </table>

@@ -1,8 +1,33 @@
-<div class="main tasks-show">
-  <div class="container">
-    <div class="tasks-show-item">
-      <p><%= @tasks.name %></p>  
-      
+<!--<div class="main tasks-show">-->
+
+<div class= "row">
+  <div class= "col-md-10 col-md-offset-1">
+    <table  class="table table-task" id="table-task">  
+      <tbody>
+        <h1>タスクの詳細</h1>
+          <tr>
+            <th>名称</th>
+            <td><%= @tasks.name %></td>
+          </tr>
+          <tr>
+            <th>詳細</th>
+            <td><%= @tasks.description %></td>
+          </tr>
+          <tr>
+            <th>作成日</th>
+            <td><%= @tasks.created_at.strftime('%Y/%m/%d %H:%M') %></td>
+          </tr>
+          <tr>  
+            <th>更新日</th>
+            <td><%= @tasks.updated_at.strftime('%Y/%m/%d %H:%M') %></td>
+          </tr>
+      </tbody>
+    </table>
+    <div>
+      <%= link_to "編集", edit_task_path(current_user),  class: "btn btn-success" %>
+      <%= link_to "削除", @tasks, method: :delete,
+       data: { confirm: "削除してよろしいですか？" }, class: "btn btn-danger" %>
     </div>
   </div>
 </div>
+<!--</div>-->

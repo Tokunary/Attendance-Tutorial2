@@ -22,7 +22,7 @@ h1 {
 /* tasks/new */
 
 
-textarea-form-control {
+.textarea-form-control {
   height: auto;
 }
 
@@ -30,4 +30,21 @@ textarea-form-control {
 .form-control {
   padding: 6px 12px;
 }
+
  
+ /* tasks/show */
+
+#table-task {
+  border-collapse: collapse;
+}
+
+#table-task th, #table-task td{
+  border: solid 1px #ddd;
+}
+
+#table-task th {
+  
+  position: relative;
+  text-align: center;
+  background-color: #f5f5f5;
+} 

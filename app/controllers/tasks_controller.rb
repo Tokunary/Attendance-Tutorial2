@@ -7,7 +7,7 @@ class TasksController < ApplicationController
   end
   
   def show
-    @tasks = @user.tasks.find(params[:id])
+    @tasks = Task.find(params[:id])
   end
 
   def new
