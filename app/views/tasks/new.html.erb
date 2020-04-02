@@ -1,17 +1,20 @@
 <% provide(:title, 'New Tasks') %>
 <div class="tasks-new">
   <div class=　"container">
-    <h1>タスクの新規作成</h1>
-    
-      <div class= "row">
+    <h1>タスク新規作成</h1> 
+    <%= form_tag tasks_path do %>
+      <div class= "form">
         <div class="col-md-8 col-md-offset-2">
-          <lavel class="lavel-form" for="task_name">名称</lavel>
-          <input class="form-control" type="text" name="task[name]">
-          <lavel class="lavel-form" for="task_discription" >詳細</lavel>
-          <textarea rows="5" class="form-control" name="task[discription]"></textarea>
-          <input type="submit" name="commit" value="新規登録" class="btn btn-lg btn-primary" deta-disable-with="新規登録">
+          <tr>
+            <th><b>名称</b></th>
+              <textarea rows="1" class="form-control" type="text" name="task[name]"></textarea>
+              
+            <th><b>詳細</b></th>
+              <textarea rows="5" class="form-control" name="task[discription]"></textarea>
+              <input type="submit" name="commit" value="新規登録" class="btn btn-lg btn-primary" deta-disable-with="新規登録">
+          </tr>
         </div>
       </div>
-   
+   <% end %>
   </div>
 </div>
