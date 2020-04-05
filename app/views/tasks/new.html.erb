@@ -2,7 +2,7 @@
 <div class="tasks-new">
   <div class=　"container">
     <h1>タスク新規作成</h1> 
-    <%= form_tag tasks_path do %>
+    <%= form_tag('/users/:id/tasks/:id', metod: :task ) do %>
       <div class= "form">
         <div class="col-md-8 col-md-offset-2">
           <tr>
