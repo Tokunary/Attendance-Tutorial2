@@ -24,8 +24,8 @@
       </tbody>
     </table>
     <div>
-      <%= link_to "編集", edit_task_path(current_user),  class: "btn btn-success" %>
-      <%= link_to "削除", @tasks, method: :delete,
+      <%= link_to "編集", edit_user_task_path(@user.id),  class: "btn btn-success" %>
+      <%= link_to "削除", user_task_path, method: :delete,
        data: { confirm: "削除してよろしいですか？" }, class: "btn btn-danger" %>
     </div>
   </div>
