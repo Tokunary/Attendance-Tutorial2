@@ -2,7 +2,7 @@
 <div class="tasks-new">
   <div class=　"container">
     <h1>タスク新規作成</h1> 
-    <%= form_tag do %>
+    <%= form_tag user_tasks_path do %>
       <div class= "form">
         <div class="col-md-8 col-md-offset-2">
           <tr>
@@ -11,10 +11,10 @@
               
             <th><b>詳細</b></th>
               <textarea rows="5" class="form-control" name="task[description]"></textarea>
-              <input type="submit" name="commit" value="新規登録" class="btn btn-lg btn-primary" deta-disable-with="新規登録"　method="create">
+              <input type="submit" name="commit" value="新規登録" class="btn btn-lg btn-primary" deta-disable-with="新規登録"　method="post">
           </tr>
         </div>
       </div>
-   <% end %>
+    <% end %>
   </div>
 </div>

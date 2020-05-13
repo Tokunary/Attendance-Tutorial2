@@ -3,10 +3,10 @@
 <div class="tasks-edit">
   <div class=　"container">
     <h1> タスク編集 </h1>
-    <%= form_tag edit_user_task_path do %>
+    
       <div class= "row">
         <div class="col-md-8 col-md-offset-2">
-        <%= form_with(model: @tasks, url: user_tasks_path(@current_user),local: true, method: :create) do |f| %>
+        <%= form_with(model: @tasks, url:user_task_path(@user),local: true, method: :patch) do |f| %>
           <%= render '/shared/error_messages' %>
           
           <%= f.label :名称, class: "label-form" %>
@@ -21,6 +21,6 @@
         <% end %>
         </div>
       </div>
-    <% end %>  
+     
   </div>
 </div>

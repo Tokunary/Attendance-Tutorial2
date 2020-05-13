@@ -1,41 +1,40 @@
 class TasksController < ApplicationController
   before_action :set_user
  
+ 
   def index
-   
     @tasks = @user.tasks
   end
+
   
   def show
-   
     @tasks= Task.find(params[:id])
   end
+
   
-  def edit
- 
-    @tasks = @user.tasks.find(params[:id])
-  end
-
-
   def new
-   
-    @task = Task.new
+    @tasks = Task.new
   end
   
   def create
-    @tasks = Task.new(tasks_params)
-    @tasks = save
+    @tasks = @user.tasks.new(task_params)
+    @tasks.save
     redirect_to user_tasks_url
   end
   
+
+ 
   
-  
+  def edit
+    @tasks = @user.tasks.find(params[:id])
+  end
+
+
   def update
     @tasks = @user.tasks.find(params[:id])
-    @tasks.name = params[:name]
-    @tasks.description = params[:description]
-    @tasks.save
-    redirect_to tasks_url
+    @tasks.update_attributes(task_params)
+      # flash[:success] = "ユーザー情報を更新しました。"
+    redirect_to user_tasks_url
   end
   
   def destroy
