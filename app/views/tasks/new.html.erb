@@ -3,18 +3,23 @@
   <div class=　"container">
     <h1>タスク新規作成</h1> 
     <%= form_tag user_tasks_path do %>
-      <div class= "form">
-        <div class="col-md-8 col-md-offset-2">
-          <tr>
-            <th><b>名称</b></th>
-              <textarea rows="1" class="form-control" type="text" name="task[name]"></textarea>
-              
-            <th><b>詳細</b></th>
-              <textarea rows="5" class="form-control" name="task[description]"></textarea>
-              <input type="submit" name="commit" value="新規登録" class="btn btn-lg btn-primary" deta-disable-with="新規登録"　method="post">
-          </tr>
+      <div class= "row">
+        <div class= "col-md-8 col-md-offset-2">
+          <%=form_with(model: @tasks, url:user_tasks_path(current_user), local: true) do |f| %>
+            <%= render 'shared/error_messages', object: @tasks %>
+            
+            <%=f.label :名称, class: "label-#{yield(:class_text)}" %>
+            <%=f.text_field :name, class: "form-control" %>
+            
+            <%=f.label :詳細, class: "label-#{yield(:class_text)}" %>
+            <%=f.text_area :description, class: "form-control", size: "15x5" %>
+            
+            <%=f.submit "新規登録", class: "btn btn-lg  btn-primary btn-form" %>
+          <% end %>
         </div>
       </div>
     <% end %>
   </div>
 </div>
+
+   
