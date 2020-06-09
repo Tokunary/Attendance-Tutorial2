@@ -36,12 +36,12 @@ class TasksController < ApplicationController
     if @tasks = @user.tasks.find(params[:id])
        @tasks.update_attributes(task_params)
        flash[:success] = "タスクを更新しました。"
-       
+       redirect_to user_tasks_url
     else
-       flash[:danger] = "#{@user.name}の更新は失敗しました。<br>" + @tasks.errors.full_messages.join("<br>")
+      # flash[:danger] = "#{@user.name}の更新は失敗しました。<br>" + @tasks.errors.full_messages.join("<br>")
        render :edit
     end
-    redirect_to user_tasks_url
+    
   end
   
   def destroy
