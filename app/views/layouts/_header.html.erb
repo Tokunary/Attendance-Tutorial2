@@ -5,12 +5,13 @@
       <%= link_to "Task App", root_path, id: "logo" %>
       <nav>
         <ul class="nav navbar-nav navbar-right">
-          
+         
           <li><%= link_to "トップ", root_path, id: "header-list" %></li>
           <% if logged_in? %>
             <li>
-              <% if current_user.admin? && !current_user?(user) %>
+              <% if current_user.admin?  %>
                 <%= link_to "利用者一覧", users_path, id: "header-list" %>
+                
               <% end %>
             </li>
             <li><%= link_to "タスク作成",new_user_task_path(session[:user_id]), id: "header-list" %></li>

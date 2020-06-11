@@ -13,8 +13,14 @@
     
     <% @users.each do |user| %>
       <tr>
-        <td><%= link_to user.name, user %></td>
-        <td>
+        <td><%= link_to user.name, user %>
+            <% if user.admin? %>
+              <label class="label label-primary">管理者 </label>
+            <% else %>
+              <label class="label label-success">一般</label>
+            <% end %>
+        </td>
+        <td align="right">
           <% if current_user.admin? && !current_user?(user) %>
             
             <%= link_to "削除", user, method: :delete,
