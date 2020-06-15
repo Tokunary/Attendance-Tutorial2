@@ -18,7 +18,7 @@ User.create!( name: "Sample User",
 end
 
 
-@users = User.order(:created_at).take(3)
+@users = User.order(:created_at).take(5)
 50.times do |n|
   name =Faker::Lorem.sentence(2)
   description = Faker::Lorem.sentence(5)
