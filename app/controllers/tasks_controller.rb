@@ -8,17 +8,18 @@ class TasksController < ApplicationController
 
   
   def show
-    @tasks= @user.tasks.find(params[:id])
+    @task = @user.tasks.find(params[:id])
   end
 
   
   def new
-    @tasks = Task.new
+    @task = Task.new
   end
   
   def create
-    @tasks = @user.tasks.new(task_params)
-    if @tasks.save
+    @task = @user.tasks.new(task_params)
+    
+    if @task.save
       flash[:success] ='タスクを新規作成しました'
       redirect_to user_tasks_url
     else
@@ -28,25 +29,24 @@ class TasksController < ApplicationController
   
 
   def edit
-    @tasks = @user.tasks.find(params[:id])
+    @task = @user.tasks.find(params[:id])
   end
 
 
   def update
-    if @tasks = @user.tasks.find(params[:id])
-       @tasks.update_attributes(task_params)
-       flash[:success] = "タスクを更新しました。"
-       redirect_to user_tasks_url
-    else
-      # flash[:danger] = "#{@user.name}の更新は失敗しました。<br>" + @tasks.errors.full_messages.join("<br>")
-       render :edit
-    end
+    @task = @user.tasks.find(params[:id])
     
+      if @task.update_attributes(task_params)
+        flash[:success] = "タスクを更新しました。"
+        redirect_to user_task_url(@user, @task)
+      else
+        render :edit
+      end
   end
   
   def destroy
-    @tasks = @user.tasks.find(params[:id])
-    @tasks.destroy
+    @task = @user.tasks.find(params[:id])
+    @task.destroy
     flash[:success] = "タスクを削除しました。"    
     redirect_to user_tasks_url
   end
@@ -57,6 +57,6 @@ class TasksController < ApplicationController
     end
     
     def task_params
-      params.require(:task).permit(:name,:description)
+      params.require(:task).permit(:name, :description)
     end
 end

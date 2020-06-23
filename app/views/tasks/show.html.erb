@@ -7,19 +7,19 @@
         <h1>タスクの詳細</h1>
           <tr>
             <th>名称</th>
-            <td><%= @tasks.name %></td>
+            <td><%= @task.name %></td>
           </tr>
           <tr>
             <th>詳細</th>
-            <td><%= Rinku.auto_link(@tasks.description, :all, 'target="_blank"').html_safe %></td>
+            <td><%= Rinku.auto_link(@task.description, :all, 'target="_blank"').html_safe %></td>
           </tr>
           <tr>
             <th>作成日</th>
-            <td><%= @tasks.created_at.strftime('%Y/%m/%d %H:%M') %></td>
+            <td><%= @task.created_at.strftime('%Y/%m/%d %H:%M') %></td>
           </tr>
           <tr>  
             <th>更新日</th>
-            <td><%= @tasks.updated_at.strftime('%Y/%m/%d %H:%M') %></td>
+            <td><%= @task.updated_at.strftime('%Y/%m/%d %H:%M') %></td>
           </tr>
       </tbody>
     </table>
