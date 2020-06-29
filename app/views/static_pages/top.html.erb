@@ -15,7 +15,11 @@
           <p>↓↓初めてのご利用↓↓</p>
         
           <center>
-            <%= link_to "アカウント作成", signup_path, class: "btn btn-lg btn-success" %>
+            <% if current_user %>
+              <%= link_to "アカウント作成", signup_path, class: "btn btn-lg btn-success disabled" %>
+            <% else %>
+              <%= link_to "アカウント作成", signup_path, class: "btn btn-lg btn-success" %>
+            <% end %>
           </center>
         </div>
       </div>
@@ -25,17 +29,29 @@
           <%= form_with(scope: :session, url: login_path, local: true) do |f| %>
       
             <%= f.label :メールアドレス, class: "label-login" %>
-            <%= f.email_field :email, class: 'form-control' %>
+              <% if current_user %>
+                <%= f.email_field :email, readonly: true, class: 'form-control' %>
+              <% else %>  
+                <%= f.email_field :email, class: 'form-control' %>
+              <% end %>
       
             <%= f.label :パスワード, class: "label-login" %>
-            <%= f.password_field :password, class: 'form-control' %>
+              <% if current_user %>
+                <%= f.password_field :password, readonly: true, class: 'form-control' %>
+              <% else %>
+                <%= f.password_field :password, class: 'form-control' %>
+              <% end %>
             
             <%= f.label :remember_me, class: "checkbox inline checkbox-login", for: "remember-me" do %>
               <%= f.check_box :remember_me, id: "remember-me" %>
               <span>ログイン情報を記憶する</span>
             <% end %>
-      
-            <%= f.submit "ログイン", class: "btn btn-primary btn-block btn-login" %>
+            
+            <% if current_user %>
+              <%= f.submit "ログイン中",disabled: true, class: "btn btn-primary btn-block btn-login" %>
+            <% else %>
+              <%= f.submit "ログイン", class: "btn btn-primary btn-block btn-login" %>
+            <% end %>
           <% end %>
       </div>
     </div>  

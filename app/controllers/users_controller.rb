@@ -7,13 +7,20 @@ class UsersController < ApplicationController
   
   def index
      @users = User.paginate(page: params[:page], per_page: 20)
+     unless current_user.admin?
+       redirect_to (root_url)
+     end
   end
     
   def show
   end
 
   def new
-    @user = User.new
+    if @user = User.new
+      flash[:info] = "すでにログインしています。"
+      # 現在のユーザー=current_userのぺージに移動
+      redirect_to current_user
+    end
   end
   
   def create
@@ -56,6 +63,7 @@ class UsersController < ApplicationController
     end
     
     def logged_in_user
+      
       unless logged_in?
         # store_location
         flash[:danger] ="ログインしてください。"

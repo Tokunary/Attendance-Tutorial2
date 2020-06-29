@@ -1,9 +1,12 @@
 class TasksController < ApplicationController
   before_action :set_user
- 
+  before_action :correct_user, only: [:index, :show, :new, :create, :update, :destroy]
+  before_action :set_task, only: [:edit]
+  
  
   def index
-    @tasks = @user.tasks
+    @tasks = @user.tasks .order(created_at: "DESC")
+   
   end
 
   
@@ -53,10 +56,33 @@ class TasksController < ApplicationController
 
   private
     def set_user
-      @user = User.find(session[:user_id])
+      @user = User.find(params[:user_id])
+    end
+    
+    def logged_in_user
+      unless logged_in?
+        store_location
+        flash[:danger] = "ログインしてください。"
+        redirect_to login_url
+      end
     end
     
     def task_params
       params.require(:task).permit(:name, :description)
+    end
+    
+    def correct_user
+      # @user = User.find(params[:user_id]) if @user.blank?
+      unless current_user?(@user) 
+        flash[:danger] = "編集権限がありません。"
+        redirect_to(root_url)
+      end  
+    end
+    
+    def set_task
+      unless @task = @user.tasks.find_by(id: params[:id])
+        flash[:danger] = "権限がありません。"
+        redirect_to user_tasks_url
+      end  
     end
 end
